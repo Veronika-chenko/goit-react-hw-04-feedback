@@ -14,10 +14,21 @@ export function App() {
   const total = good + neutral + bad;
   const positive = Math.round((good * 100) / total);
 
-  const handleClick = evt => {
-    handleIncrement(evt, 'good', setGood);
-    handleIncrement(evt, 'neutral', setNeutral);
-    handleIncrement(evt, 'bad', setBad);
+  const handleClick = e => {
+    const name = e.target.name;
+    switch (name) {
+      case 'good':
+        setGood(state => state + 1);
+        break;
+      case 'neutral':
+        setNeutral(state => state + 1);
+        break;
+      case 'bad':
+        setBad(state => state + 1);
+        break;
+      default:
+        return;
+    }
   };
 
   return (
@@ -40,11 +51,4 @@ export function App() {
       </Section>
     </>
   );
-}
-
-function handleIncrement(evt, state, setState) {
-  if (evt.target.name === state) {
-    setState(state => state + 1);
-  }
-  return;
 }
