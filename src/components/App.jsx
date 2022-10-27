@@ -1,55 +1,50 @@
-import { Component } from "react";
-import { FeedbackOptions } from "./FeedbackOptions/FeedbackOptions";
-import { Section } from "./Section/Section";
-import { Statistics } from "./Statistics/Statistics";
-import { Notification } from "./Notification/Notification";
+import { useState } from 'react';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
+import { Section } from './Section/Section';
+import { Statistics } from './Statistics/Statistics';
+import { Notification } from './Notification/Notification';
 
+const feedbackList = ['good', 'neutral', 'bad'];
 
-export class App extends Component {
-    state = {
-        good: 0,
-        neutral: 0,
-        bad: 0,
-    };
+export function App() {
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
 
-    handleClick = (evt) => {
-        const name = evt.target.name;
-        this.setState((prevState) => ({
-            [name]: prevState[name] + 1
-        }));
-    }
+  const total = good + neutral + bad;
+  const positive = Math.round((good * 100) / total);
 
-    countTotalFeedback() {
-        const { good, neutral, bad } = this.state;
-        const total = good + neutral + bad;
-        return total;
-    }
+  const handleClick = evt => {
+    handleIncrement(evt, 'good', setGood);
+    handleIncrement(evt, 'neutral', setNeutral);
+    handleIncrement(evt, 'bad', setBad);
+  };
 
-    countPositiveFeedbackPercentage() {
-        const { good, neutral, bad } = this.state;
-        const total = good + neutral + bad;
-        const positive = Math.round(good * 100 / total);
-        return positive;
-    }
-    
-    render() {
-        const { good, neutral, bad } = this.state;
-        const objKeys = Object.keys(this.state);
-        const total = this.countTotalFeedback();
-        const positive = this.countPositiveFeedbackPercentage();
+  return (
+    <>
+      <Section title="Please leave feedback">
+        <FeedbackOptions options={feedbackList} onLeaveFeedback={handleClick} />
+      </Section>
+      <Section title="Statistics">
+        {total === 0 ? (
+          <Notification message="There is no feedback" />
+        ) : (
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={total}
+            positivePercentage={positive}
+          />
+        )}
+      </Section>
+    </>
+  );
+}
 
-        return (
-            <>
-                <Section title="Please leave feedback">
-                    <FeedbackOptions options={objKeys} onLeaveFeedback={this.handleClick} />
-                </Section>
-                <Section title="Statistics">
-                    {total === 0
-                        ? <Notification message="There is no feedback" />
-                        : <Statistics good={good} neutral={neutral} bad={bad} total={total} positivePercentage={positive} />
-                    }
-                </Section>
-            </>
-        )
-    }
-};
+function handleIncrement(evt, state, setState) {
+  if (evt.target.name === state) {
+    setState(state => state + 1);
+  }
+  return;
+}
