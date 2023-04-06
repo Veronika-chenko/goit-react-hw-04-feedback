@@ -1,7 +1,15 @@
-import PropTypes from 'prop-types';
+import { FC } from 'react';
 import { StateList, StateItem } from './Statistics.styled';
 
-export const Statistics = ({
+interface IStatisticsProps {
+    good: number;
+    neutral: number;
+    bad: number;
+    total: number;
+    positivePercentage: number;
+}
+
+export const Statistics: FC<IStatisticsProps> = ({
     good,
     neutral,
     bad,
@@ -17,12 +25,4 @@ export const Statistics = ({
             <StateItem>Positive feedback: {positivePercentage}%</StateItem>
         </StateList>
     )
-};
-
-Statistics.prototype = {
-    good: PropTypes.number.isRequired,
-    neutral: PropTypes.number.isRequired,
-    bad: PropTypes.number.isRequired,
-    total: PropTypes.number.isRequired,
-    positivePercentage: PropTypes.number.isRequired,
 };

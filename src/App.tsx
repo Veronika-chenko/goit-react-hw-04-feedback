@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
-import { Section } from './Section/Section';
-import { Statistics } from './Statistics/Statistics';
-import { Notification } from './Notification/Notification';
+import { MouseEvent, useState } from 'react';
+import { FeedbackOptions } from './components/FeedbackOptions/FeedbackOptions';
+import { Section } from './components/Section/Section';
+import { Statistics } from './components/Statistics/Statistics';
+import { Notification } from './components/Notification/Notification';
 
 export function App() {
   const [good, setGood] = useState(0);
@@ -13,8 +13,8 @@ export function App() {
   const total = good + neutral + bad;
   const positive = Math.round((good * 100) / total);
 
-  const handleClick = e => {
-    const { name } = e.target;
+  const handleClick = (e: MouseEvent<HTMLElement>) => {
+    const { name } = e.target as HTMLInputElement;
     switch (name) {
       case 'good':
         setGood(state => state + 1);
