@@ -1,28 +1,37 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ButtonWrap = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 128px);
-    grid-column-gap: 8px;
-    margin-bottom: 32px;
-`
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+`;
+
 export const Button = styled.button`
-    cursor: pointer;
+  padding: 14px 4px;
+  width: 118px;
+  @media screen and (min-width: 406px) {
+    width: 120px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 128px;
     padding: 8px 4px;
+  }
 
-    font-size: 18px;
-    text-transform: capitalize;
-    color: #000000;
-    background-color: #c3d0e3;
+  font-size: 18px;
+  text-transform: capitalize;
+  color: var(--button-text);
+  background-color: var(--accent);
 
-    border-radius: 4px;
-    border: none;
-    box-shadow: 0 4px 10px #0000000d;
-    
-    transition: color 250ms linear, background-color 250ms linear;
-    :hover,
-    :focus {
-        color: #EDF3FC;
-        background-color: #6C8FC4;
-    }
-`
+  border-radius: 4px;
+  border: none;
+  box-shadow: 2px 6px 6px var(--brown-1);
+  text-shadow: 0 2px 3px #000;
+
+  transition: background-color 250ms linear;
+  &:hover {
+    background-color: var(--brown-1);
+    box-shadow: 0 2px 2px 1px var(--accent);
+    text-shadow: 0 2px 3px var(--accent);
+  }
+`;

@@ -1,13 +1,26 @@
 @import-normalize;
 
+:root {
+  --main-background: #dab895;
+  --button-text: #ecd1ba;
+  --brown-1: #6b4d39;
+  --accent: #30190f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
-  padding: 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--accent);
+  background-color: var(--main-background);
 }
 
 code {
@@ -28,4 +41,11 @@ h4,
 p {
   margin: 0;
   padding: 0;
+}
+
+button {
+  display: inline-block;
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
 }

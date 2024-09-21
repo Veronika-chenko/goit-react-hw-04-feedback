@@ -1,9 +1,12 @@
 # Feedback Widget
 
-Feedback Widget is an application to collect statistics. 
+**Feedback Widget** is an application to collect and analyze user feedback
+statistics. Users can provide feedback using three options: **Good**,
+**Neutral** and **Bad**. Additionally, the widget displays the total number of
+collected reviews and calculates the percentage of positive feedback.
 
-There are only three options for feedback: good, neutral and bad. In addition, the total number of collected
-reviews from all categories and the percentage of positive reviews are implemented.
+- **Refresh Option:** Users can refresh the displayed statistics to view the
+  most recent feedback data within the current session.
 
-
-*The review statistics are not saved between different sessions.
+- **Session-Based Data:** Review statistics are maintained only within a single
+  session. Once the session ends, the data is not saved.
