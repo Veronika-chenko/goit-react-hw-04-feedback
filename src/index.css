@@ -21,6 +21,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: var(--accent);
   background-color: var(--main-background);
+
+  ::selection {
+    background-color: #f1d9c4;
+  }
+  ::-webkit-selection {
+    background-color: #f1d9c4;
+  }
 }
 
 code {
