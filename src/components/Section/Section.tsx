@@ -1,11 +1,14 @@
 import { FC, PropsWithChildren } from 'react';
-import { Title } from './Section.styled';
+import { SectionBox, Title } from './Section.styled';
 
-export const Section: FC<PropsWithChildren<{title: string}>> = ({ title, children }) => {
-    return (
-        <>
-            <Title>{title}</Title>
-            {children}
-        </>
-    )
-}
+export const Section: FC<PropsWithChildren<{ title: string }>> = ({
+  title,
+  children,
+}) => {
+  return (
+    <SectionBox>
+      <Title>{title}</Title>
+      {children}
+    </SectionBox>
+  );
+};

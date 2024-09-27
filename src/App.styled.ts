@@ -53,6 +53,12 @@ export const FlexContainer = styled.div`
   gap: 24px;
 `;
 
+export const ContentImageWrap = styled.div`
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+`;
+
 export const ResetButton = styled.button`
   margin-top: 40px;
   padding: 8px 16px;

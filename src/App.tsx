@@ -9,6 +9,7 @@ import {
   RestoreScoreButton,
   ResetButton,
   FlexContainer,
+  ContentImageWrap,
 } from './App.styled';
 
 import { ScoreType, useScore } from './hooks/useScore';
@@ -16,6 +17,7 @@ import { ScoreType, useScore } from './hooks/useScore';
 import LogoIcon from './img/coffeeCup.png';
 import RestoreScoreIcon from './img/refreshIcon.svg';
 import NoFeedback from './img/stare.png';
+import ContentImage from './img/coffeeBreakfastSticker.png';
 
 export function App() {
   const [showRestoreButton, setShowRestoreButton] = useState(false);
@@ -72,10 +74,16 @@ export function App() {
             positivePercentage={positive}
           />
         )}
+        {total > 0 && (
+          <ContentImageWrap>
+            <img src={ContentImage} alt="Coffee enthusiast" width={100} />
+          </ContentImageWrap>
+        )}
       </Section>
       {total > 0 && (
         <ResetButton onClick={handleResetButtonClick}>Reset</ResetButton>
       )}
+
       {showRestoreButton && total <= 0 && (
         <RestoreScoreButton onClick={handleRestoreButtonClick}>
           <img src={RestoreScoreIcon} alt="Refresh score" width={24} />
